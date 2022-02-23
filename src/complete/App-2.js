@@ -36,7 +36,7 @@ class App extends React.Component {
     return (
       <div className="container">
         <h1 className="app-title">
-          Top 10 Surfing Destinations
+          Top Surfing Destinations
         </h1>
         <div className="content-container">
           <h3 className="step">Step 2</h3>
