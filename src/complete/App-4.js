@@ -34,6 +34,23 @@ Link.contextTypes = {
   history: PropTypes.object,
 };
 
+class Redirect extends React.Component {
+
+  static contextTypes = {
+    history: PropTypes.object,
+  }
+
+  componentDidMount() {
+    const history = this.context.history;
+    const to = this.props.to;
+    history.push(to);
+  }
+
+  render() {
+    return null;
+  }
+}
+
 class Router extends React.Component {
   // defines property on class Router itself (Router.childContextTypes) rather than instance
   static childContextTypes = {
@@ -67,16 +84,13 @@ const App = () => (
         Top 10 Surfing Destinations
       </h1>
       <div className="content-container">
-        <h3 className="step">Step 3</h3>
-        <h2 className="title">Create Router Component</h2>
+        <h3 className="step">Step 4</h3>
+        <h2 className="title">Create Redirect Component</h2>
         <p>
-          We build a <code>{'Router'}</code> component that will do two things.
+          We create a <code>{'Redirect'}</code> component to manipulate the browser's location.
         </p>
-        <ol>
-          <li>1. Supply its children with context for both <code>location</code> and <code>history</code></li>
-          <li>2. Re-render the app whenever the history changes.</li>
-        </ol>
-        <p>The app works the same as it did in the previous step, only now our app is wrapped in a <code>Router</code> component that provides location-management APIs to child components. Now, <code>Link</code> and <code>Route</code> use the <code>history</code> and <code>location</code> property, respectively, from the shared context object provided by <code>Router</code>.</p>
+        <p><code>Redirect</code> will be supplied with a <code><em>to</em></code> prop to get the location just like <code>Link</code>. And, like <code>Link</code>, it will also grab <code>history</code> from context and use that to modify the browser's location. Whereas <code>Link</code> changed location on a user click, <code>Redirect</code> will perform the redirect whenever it's rendered.</p>
+        <p>The <code>Nazare</code> component added below runs a countdown and conditionally renders <code>Redirect</code> after a countodown, supplying <code>/</code> to <code>Redirect</code> as the location. Click the <code>/nazare</code> link to see this in action.</p>
       </div>
       <div className="content-container">
         <h3 className="title">Links List</h3>
@@ -108,6 +122,11 @@ const App = () => (
               <code>/jeffreys-bay</code>
             </Link>
           </li>
+          <li>
+            <Link to='/nazare'>
+              <code>/nazare</code>
+            </Link>
+          </li>
         </ul>
         </div>
       <Route path='/popoyo' component={Popoyo} />
@@ -115,6 +134,7 @@ const App = () => (
       <Route path='/uluwatu' component={Uluwatu} />
       <Route path='/cloudbreak' component={Cloudbreak} />
       <Route path='/jeffreys-bay' component={JeffreysBay} />
+      <Route path='/nazare' component={Nazare} />
     </div>
   </Router>
 );
@@ -167,10 +187,43 @@ const JeffreysBay = () => (
   <div className="card-container">
     <h3 className="card-heading">Jeffreys Bay</h3>
     <p>
-      Often referred to as J-Bay, Jeffreys Bay is regarded as the surfing mecca of South Africa and home to one of the best right point breaks on the planet. Located on the western edge of South Africa’s Eastern Cape Province, Jeffreys Bay is situated inside a crescent-shaped bay that shelters many of its incredible point breaks. The region was first popularized in The Endless Summer, when Bruce Brian stumbled upon Cape Saint Francis — the spot that is now lovingly referred to as Bruce’s Beauties. Although Brian deemed the spot perfect at the time, J-Bay, located just to the east, is more deserving of surfing glory.
+      ften referred to as J-Bay, Jeffreys Bay is regarded as the surfing mecca of South Africa and home to one of the best right point breaks on the planet. Located on the western edge of South Africa’s Eastern Cape Province, Jeffreys Bay is situated inside a crescent-shaped bay that shelters many of its incredible point breaks. The region was first popularized in The Endless Summer, when Bruce Brian stumbled upon Cape Saint Francis — the spot that is now lovingly referred to as Bruce’s Beauties. Although Brian deemed the spot perfect at the time, J-Bay, located just to the east, is more deserving of surfing glory.
     </p>
     <Source />
   </div>
 )
+
+class Nazare extends React.Component {
+  state = {
+    counter: 3,
+  };
+
+  componentDidMount() {
+    this.interval = setInterval(() => (
+      this.setState(prevState => {
+        return {
+          counter: prevState.counter - 1,
+        };
+      }
+    )), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+  render() {
+    return (
+      <div className="card-container">
+        <h3 className="card-heading">Nazare</h3>
+        <p>These waves are too dangerous...</p>
+        <p>Redirecting in {this.state.counter}...</p>
+        {
+          (this.state.counter < 1) ? (
+            <Redirect to='/' />
+          ) : null
+        }
+      </div>
+    );
+  }
+}
 
 export default App;
