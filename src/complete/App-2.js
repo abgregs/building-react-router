@@ -1,5 +1,9 @@
 import React from 'react';
 
+import { createBrowserHistory } from "history";
+
+const history = createBrowserHistory();
+
 const Route = ({ path, component }) => {
   const pathname = window.location.pathname;
   if (pathname.match(path)) {
