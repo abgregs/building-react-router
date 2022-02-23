@@ -15,7 +15,23 @@ const Route = ({ path, component }) => {
   }
 };
 
+const Link = ({ to, children }) => (
+  <a
+    onClick={(e) => {
+      e.preventDefault();
+      history.push(to);
+    }}
+    href={to}
+  >
+    {children}
+  </a>
+);
+
 class App extends React.Component {
+  componentDidMount() {
+    history.listen(() => this.forceUpdate());
+  }
+
   render() {
     return (
       <div className="container">
@@ -23,46 +39,43 @@ class App extends React.Component {
           Top 10 Surfing Destinations
         </h1>
         <div className="content-container">
-          <h3 className="step">Step 1</h3>
-          <h2 className="title">Simple Route Component</h2>
+          <h3 className="step">Step 2</h3>
+          <h2 className="title">Add Link Component</h2>
           <p>
-            We create a simple <code>{'<Route />'}</code> component that is supplied with two arguments as props.
+            We create a <code>{'Link'}</code> component that gets passed a location and produces an <code>{'<a>'}</code> tag with special <code><em>onClick</em></code> binding.
           </p>
-          <ol>
-            <li>1. A <code><em>path</em></code> to <em>match</em> against the browser's location.</li>
-            <li>2. A <code><em>component</em></code> to render when the browser's location matches the path.</li>
-          </ol>
-          <p>The links listed below are regular <code><a>{'<a>'}</a></code> elements. Our page will still perform the default behavior on link click. It will make a fresh request to the server at that location and return <code>index.html</code>. Our browser then mounts our entire React app to the DOM. If any <code>{'<Route />'}</code> is present and has a <code><em>path</em></code> matching the browser location, then the component passed to that route is rendered.</p>
+        
+          <p>This time the links below are rendered by our custom <code>{'Link'}</code> component. When our <code><em>onClick</em></code> handler runs, we prevent the default behavior of the browser. There is no full page load. Instead, we use the history API to update the location of our app. This will update the path in the URL. We listen for this change in the browser history and use <code>forceUpdate()</code> to alert our React app. Our <code>{'Route'}</code> compenent from Step 1 hasn't changed. It will once again check for a match against the new location. However, this time the updates to our app happen much faster since we avoid a full page load.</p>
         </div>
         <div className="content-container">
           <h3 className="title">Links List</h3>
           <ul>
             <li>
-              <a href='/popoyo'>
+              <Link to='/popoyo'>
                 <code>/popoyo</code>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href='/nosara'>
+              <Link to='/nosara'>
                 <code>/nosara</code>
-              </a>
+              </Link>
             </li>
           </ul>
           <ul>
             <li>
-              <a href='/uluwatu'>
+              <Link to='/uluwatu'>
                 <code>/uluwatu</code>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href='/cloudbreak'>
+              <Link to='/cloudbreak'>
                 <code>/cloudbreak</code>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href='/jeffreys-bay'>
+              <Link to='/jeffreys-bay'>
                 <code>/jeffreys-bay</code>
-              </a>
+              </Link>
             </li>
           </ul>
           </div>
