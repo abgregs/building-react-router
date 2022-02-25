@@ -90,7 +90,7 @@ const App = () => (
           We create a <code>{'Redirect'}</code> component to manipulate the browser's location.
         </p>
         <p><code>Redirect</code> will be supplied with a <code><em>to</em></code> prop to get the location just like <code>Link</code>. And, like <code>Link</code>, it will also grab <code>history</code> from context and use that to modify the browser's location. Whereas <code>Link</code> changed location on a user click, <code>Redirect</code> will perform the redirect whenever it's rendered.</p>
-        <p>The <code>Nazare</code> component added below runs a countdown and conditionally renders <code>Redirect</code> after a countodown, supplying <code>/</code> to <code>Redirect</code> as the location. Click the <code>/nazare</code> link to see this in action.</p>
+        <p>The <code>Nazare</code> component added below runs a countdown and conditionally renders <code>Redirect</code> when the countdown completes, supplying <code>/</code> to <code>Redirect</code> as the location. Click the <code>/nazare</code> link to see this in action.</p>
       </div>
       <div className="content-container">
         <h3 className="title">Links List</h3>
@@ -140,8 +140,8 @@ const App = () => (
 );
 
 const Source = () => (
-  <a href="https://57hours.com/best-of/surfing-worldwide/" target="_blank">[source]</a>
-)
+  <a href="https://57hours.com/best-of/surfing-worldwide/" target="_blank" rel="noreferrer">[source]</a>
+);
 
 const Popoyo = () => (
   <div className="card-container">

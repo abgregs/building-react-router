@@ -26,8 +26,8 @@ const App = () => (
 );
 
 const Source = () => (
-  <a href="https://57hours.com/best-of/surfing-worldwide/" target="_blank">[source]</a>
-)
+  <a href="https://57hours.com/best-of/surfing-worldwide/" target="_blank" rel="noreferrer">[source]</a>
+);
 
 const NoMatch = () => (
   <div>
@@ -48,7 +48,7 @@ const Layout =() => (
         Now let's replace our custom router setup with React Router and take advantage of some of its features.
       </p>
       <p>We scrap the custom components <code>Link</code>, <code>Router</code>, <code>Route</code>, and <code>Redirect</code> that we previously created. We also no longer need to use the history API or provide context to our child components. Instead of our custom <code>Redirect</code> component, we can use <code>Navigate</code> from React Router inside our class component <code>Nazare</code> for performing our redirect. Meanwhile, our actual <code>Link</code> and <code>Route</code> compoonents remain basically unchanged. But now React Router is performing the work.</p>
-      <p>Now that we are using React Router, we can take advantage of nesting and inheritance in our routes. We create a parent route for <code><em>path='/'</em></code> that wraps the routes used in our Links List. This parent route will be responsible for UI shared across our child routes and provide a match for the base path for our redirect.</p>
+      <p>Now that we are using React Router, we can take advantage of nesting and inheritance in our routes. We create a parent route with <code><em>path='/'</em></code> that wraps the routes used in our Links List. This parent route is responsible for UI shared across our child routes and provides a match for the base path we use in our redirect.</p>
       <p>We also add a route to render a simple component called <code>NoMatch</code> for any paths that don't match any routes in our list. This is illustrated by the <code>/made-up-path</code> link in our list.</p>
     </div>
     <div className="content-container">

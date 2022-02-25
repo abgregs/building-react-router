@@ -120,8 +120,8 @@ const App = () => (
 );
 
 const Source = () => (
-  <a href="https://57hours.com/best-of/surfing-worldwide/" target="_blank">[source]</a>
-)
+  <a href="https://57hours.com/best-of/surfing-worldwide/" target="_blank" rel="noreferrer">[source]</a>
+);
 
 const Popoyo = () => (
   <div className="card-container">
