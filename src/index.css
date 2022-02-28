@@ -31,6 +31,10 @@ ol {
   @apply text-2xl font-bold mb-2;
 }
 
+.card-container {
+  @apply mb-4
+}
+
 .card-heading {
   @apply text-xl font-bold;
 }

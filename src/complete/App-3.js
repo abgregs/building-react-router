@@ -151,7 +151,7 @@ const Uluwatu = () => (
     </p>
     <Source />
   </div>
-)
+);
 
 const Cloudbreak = () => (
   <div className="card-container">
@@ -161,7 +161,7 @@ const Cloudbreak = () => (
     </p>
     <Source />
   </div>
-)
+);
 
 const JeffreysBay = () => (
   <div className="card-container">
@@ -171,6 +171,6 @@ const JeffreysBay = () => (
     </p>
     <Source />
   </div>
-)
+);
 
 export default App;

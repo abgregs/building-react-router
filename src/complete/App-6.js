@@ -1,152 +1,94 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 
-import { createBrowserHistory } from "history";
-
-const Route = ({ path, component }, { location }) => {
-  const pathname = location.pathname;
-  if (pathname.match(path)) {
-    return (
-      React.createElement(component)
-    );
-  } else {
-    return null;
-  }
-};
-
-Route.contextTypes = {
-  location: PropTypes.object,
-};
-
-const Link = ({ to, children }, { history }) => (
-  <a
-    onClick={(e) => {
-      e.preventDefault();
-      history.push(to);
-    }}
-    href={to}
-  >
-    {children}
-  </a>
-);
-
-Link.contextTypes = {
-  history: PropTypes.object,
-};
-
-class Redirect extends React.Component {
-
-  static contextTypes = {
-    history: PropTypes.object,
-  }
-
-  componentDidMount() {
-    const history = this.context.history;
-    const to = this.props.to;
-    history.push(to);
-  }
-
-  render() {
-    return null;
-  }
-}
-
-class Router extends React.Component {
-  // defines property on class Router itself (Router.childContextTypes) rather than instance
-  static childContextTypes = {
-    history: PropTypes.object,
-    location: PropTypes.object,
-  };
-
-  constructor(props) {
-    super(props);
-
-    this.history = createBrowserHistory();
-    this.history.listen(() => this.forceUpdate());
-  }
-
-  getChildContext() {
-    return {
-      history: this.history,
-      location: window.location,
-    };
-  }
-
-  render() {
-    return this.props.children;
-  }
-}
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+  Link,
+  Navigate,
+} from 'react-router-dom';
 
 const App = () => (
   <Router>
-    <div className="container">
-      <h1 className="app-title">
-        Top Surfing Destinations
-      </h1>
-      <div className="content-container">
-        <h3 className="step">Step 5</h3>
-        <h2 className="title">Ambiguous Routes</h2>
-        <p>
-          We add a route for the path <code>/jeffreys-bay/again</code> that renders a component <code>JeffreysBayAgain</code>. What will happen when we visit this location in the browser?
-        </p>
-        <p>Our custom router doesn't account for exact matches or have anything in place to handle ambiguous routes. This means that any location that begins with the path will be considered a match in our routes. When we visit <code>/jeffreys-bay/again</code> both components render. This is typically not desirable. In our next step, we'll replace our custom router with React Router and see how the features of React Router address this.</p>
-      </div>
-      <div className="content-container">
-        <h3 className="title">Links List</h3>
-        <ul>
-          <li>
-            <Link to='/popoyo'>
-              <code>/popoyo</code>
-            </Link>
-          </li>
-          <li>
-            <Link to='/nosara'>
-              <code>/nosara</code>
-            </Link>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <Link to='/uluwatu'>
-              <code>/uluwatu</code>
-            </Link>
-          </li>
-          <li>
-            <Link to='/cloudbreak'>
-              <code>/cloudbreak</code>
-            </Link>
-          </li>
-          <li>
-            <Link to='/jeffreys-bay'>
-              <code>/jeffreys-bay</code>
-            </Link>
-          </li>
-          <li>
-            <Link to='/jeffreys-bay/again'>
-              <code>/jeffreys-bay/again</code>
-            </Link>
-          </li>
-          <li>
-            <Link to='/nazare'>
-              <code>/nazare</code>
-            </Link>
-          </li>
-        </ul>
-        </div>
-      <Route path='/popoyo' component={Popoyo} />
-      <Route path='/nosara' component={Nosara} />
-      <Route path='/uluwatu' component={Uluwatu} />
-      <Route path='/cloudbreak' component={Cloudbreak} />
-      <Route path='/jeffreys-bay' component={JeffreysBay} />
-      <Route path='/jeffreys-bay/again' component={JeffreysBayAgain} />
-      <Route path='/nazare' component={Nazare} />
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path='popoyo' element={<Popoyo />}/>
+        <Route path='nosara' element={<Nosara />} />
+        <Route path='uluwatu' element={<Uluwatu />} />
+        <Route path='cloudbreak' element={<Cloudbreak />} />
+        <Route path='jeffreys-bay' element={<JeffreysBay />} />
+        <Route path='jeffreys-bay/again' element={<JeffreysBayAgain />} />
+        <Route path='nazare' element={<Nazare />} />
+      </Route>
+    </Routes>
   </Router>
 );
 
 const Source = () => (
   <a href="https://57hours.com/best-of/surfing-worldwide/" target="_blank" rel="noreferrer">[source]</a>
 );
+
+const Layout =() => (
+  <div className="container">
+    <h1 className="app-title">
+      Top Surfing Destinations
+    </h1>
+    <div className="content-container">
+      <h3 className="step">Step 6</h3>
+      <h2 className="title">Using React Router</h2>
+      <p>
+        Now let's replace our custom router setup with React Router and take advantage of some of its features.
+      </p>
+      <p>We scrap the custom components <code>Link</code>, <code>Router</code>, <code>Route</code>, and <code>Redirect</code> that we previously created. We also no longer need to use the history API or manually provide context to our child components. Instead of our custom <code>Redirect</code> component, we can use <code>Navigate</code> from React Router inside our class component <code>Nazare</code> for performing our redirect. Meanwhile, our actual <code>Link</code> and <code>Route</code> components remain basically unchanged. But now React Router is performing the work.</p>
+      <p>Now that we are using React Router, we can take advantage of nesting and inheritance in our routes. We create a parent route with <code><em>path</em>='/'</code> that wraps the routes used in our Links List. This provides a match for the base path we use in our redirect as well as the ability to share some common UI across our child routes. We use React Router's <code>Outlet</code> within our parent component to render the appropriate matching child route in our list when location changes.</p>
+      <p>Whereas our custom router allowed multiple matching routes for the location <code>/jeffreys-bay/again</code>, React Router now selects only the route with the corresponding full matching path for <code>/jeffreys-bay/again</code>.</p>
+    </div>
+    <div className="content-container">
+      <h3 className="title">Links List</h3>
+      <ul>
+        <li>
+          <Link to='/popoyo'>
+            <code>/popoyo</code>
+          </Link>
+        </li>
+        <li>
+          <Link to='/nosara'>
+            <code>/nosara</code>
+          </Link>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <Link to='/uluwatu'>
+            <code>/uluwatu</code>
+          </Link>
+        </li>
+        <li>
+          <Link to='/cloudbreak'>
+            <code>/cloudbreak</code>
+          </Link>
+        </li>
+        <li>
+          <Link to='/jeffreys-bay'>
+            <code>/jeffreys-bay</code>
+          </Link>
+        </li>
+        <li>
+          <Link to='/jeffreys-bay/again'>
+            <code>/jeffreys-bay/again</code>
+          </Link>
+        </li>
+        <li>
+          <Link to='/nazare'>
+            <code>/nazare</code>
+          </Link>
+        </li>
+      </ul>
+    </div>
+    <Outlet />
+  </div>
+)
 
 const Popoyo = () => (
   <div className="card-container">
@@ -199,7 +141,7 @@ const JeffreysBay = () => (
 );
 
 const JeffreysBayAgain = () => (
-  <div className="card-containe">
+  <div className="card-container">
     <h3 className="card-heading">Jeffreys Bay Again</h3>
     <p>
       Often referred to as J-Bay, Jeffreys Bay is regarded as the surfing mecca of South Africa and home to one of the best right point breaks on the planet. Located on the western edge of South Africa’s Eastern Cape Province, Jeffreys Bay is situated inside a crescent-shaped bay that shelters many of its incredible point breaks. The region was first popularized in The Endless Summer, when Bruce Brian stumbled upon Cape Saint Francis — the spot that is now lovingly referred to as Bruce’s Beauties. Although Brian deemed the spot perfect at the time, J-Bay, located just to the east, is more deserving of surfing glory.
@@ -233,7 +175,7 @@ class Nazare extends React.Component {
         <p>Redirecting in {this.state.counter}...</p>
         {
           (this.state.counter < 1) ? (
-            <Redirect to='/' />
+           <Navigate to='/' />
           ) : null
         }
       </div>
