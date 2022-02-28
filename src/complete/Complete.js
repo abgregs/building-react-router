@@ -36,13 +36,12 @@ const Layout =() => (
       Top Surfing Destinations
     </h1>
     <div className="content-container">
-      <h3 className="step">Step 7</h3>
-      <h2 className="title">Add "Not Found" Route</h2>
+      <h2 className="title">Completed App</h2>
       <p>
-        We add a "Not Found" route that uses <code><em>path</em>='*'</code> to display a <code>NotFound</code>component.
+        Here is our completed app with the latest changes from final last step.
       </p>
       <p>
-        This route will match any URL but will have the weakest precedence among the other routes. It will only be selected when no other routes match. The link to <code>/does-not-exist</code> shows our corresponding <code>NotFound</code> component.
+        This project helped us learn a bit about how React Router works under the hood as well as become familiar with some features of React Router 6.
       </p>
     </div>
     <div className="content-container">
