@@ -31,10 +31,7 @@ const Source = () => (
 );
 
 const Layout =() => (
-  <div className="container">
-    <h1 className="app-title">
-      Top Surfing Destinations
-    </h1>
+  <div>
     <div className="content-container">
       <h3 className="step">Step 7</h3>
       <h2 className="title">Add "Not Found" Route</h2>
@@ -49,44 +46,44 @@ const Layout =() => (
       <h3 className="title">Links List</h3>
       <ul>
         <li>
-          <Link to='/popoyo'>
+          <Link to='popoyo'>
             <code>/popoyo</code>
           </Link>
         </li>
         <li>
-          <Link to='/nosara'>
+          <Link to='nosara'>
             <code>/nosara</code>
           </Link>
         </li>
       </ul>
       <ul>
         <li>
-          <Link to='/uluwatu'>
+          <Link to='uluwatu'>
             <code>/uluwatu</code>
           </Link>
         </li>
         <li>
-          <Link to='/cloudbreak'>
+          <Link to='cloudbreak'>
             <code>/cloudbreak</code>
           </Link>
         </li>
         <li>
-          <Link to='/jeffreys-bay'>
+          <Link to='jeffreys-bay'>
             <code>/jeffreys-bay</code>
           </Link>
         </li>
         <li>
-          <Link to='/jeffreys-bay/again'>
+          <Link to='jeffreys-bay/again'>
             <code>/jeffreys-bay/again</code>
           </Link>
         </li>
         <li>
-          <Link to='/nazare'>
+          <Link to='nazare'>
             <code>/nazare</code>
           </Link>
         </li>
         <li>
-          <Link to='/does-not-exist'>
+          <Link to='does-not-exist'>
             <code>/does-not-exist</code>
           </Link>
         </li>

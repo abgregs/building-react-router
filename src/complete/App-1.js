@@ -14,10 +14,7 @@ const Route = ({ path, component }) => {
 class App extends React.Component {
   render() {
     return (
-      <div className="container">
-        <h1 className="app-title">
-          Top Surfing Destinations
-        </h1>
+      <div>
         <div className="content-container">
           <h3 className="step">Step 1</h3>
           <h2 className="title">Simple Route Component</h2>
@@ -28,7 +25,7 @@ class App extends React.Component {
             <li>1. A <code><em>path</em></code> to <em>match</em> against the browser's location.</li>
             <li>2. A <code><em>component</em></code> to render when the browser's location matches the path.</li>
           </ol>
-          <p>The links listed below are regular <code><a>{'<a>'}</a></code> elements. Our page will still perform the default behavior on link click. It will make a fresh request to the server at that location and return <code>index.html</code>. Our browser then mounts our entire React app to the DOM. If any <code>{'Route'}</code> is present and has a <code><em>path</em></code> matching the browser location, then the component passed to that route is rendered.</p>
+          <p>The links listed below are regular <code>{'<a>'}</code> elements. Our page will still perform the default behavior on link click. It will make a fresh request to the server at that location and return <code>index.html</code>. Our browser then mounts our entire React app to the DOM. If any <code>{'Route'}</code> is present and has a <code><em>path</em></code> matching the browser location, then the component passed to that route is rendered.</p>
         </div>
         <div className="content-container">
           <h3 className="title">Links List</h3>

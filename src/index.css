@@ -17,10 +17,6 @@ ol {
   @apply mb-4;
 }
 
-.app-title {
-  @apply text-center text-3xl font-bold my-8;
-}
-
 .content-container {
   @apply mb-12;
 }

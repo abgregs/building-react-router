@@ -31,14 +31,11 @@ const Source = () => (
 );
 
 const Layout =() => (
-  <div className="container">
-    <h1 className="app-title">
-      Top Surfing Destinations
-    </h1>
+  <div>
     <div className="content-container">
       <h2 className="title">Completed App</h2>
       <p>
-        Here is our completed app with the latest changes from final last step.
+        Here is our completed app with the latest changes from the last step.
       </p>
       <p>
         This project helped us learn a bit about how React Router works under the hood as well as become familiar with some features of React Router 6.

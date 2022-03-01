@@ -79,10 +79,7 @@ class Router extends React.Component {
 
 const App = () => (
   <Router>
-    <div className="container">
-      <h1 className="app-title">
-        Top Surfing Destinations
-      </h1>
+    <div>
       <div className="content-container">
         <h3 className="step">Step 5</h3>
         <h2 className="title">Ambiguous Routes</h2>

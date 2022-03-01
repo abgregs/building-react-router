@@ -62,10 +62,7 @@ class Router extends React.Component {
 
 const App = () => (
   <Router>
-    <div className="container">
-      <h1 className="app-title">
-        Top Surfing Destinations
-      </h1>
+    <div>
       <div className="content-container">
         <h3 className="step">Step 3</h3>
         <h2 className="title">Create Router Component</h2>
@@ -76,7 +73,7 @@ const App = () => (
           <li>1. Supply its children with context for both <code>location</code> and <code>history</code></li>
           <li>2. Re-render the app whenever the history changes.</li>
         </ol>
-        <p>The app works the same as it did in the previous step, only now our app is wrapped in a <code>Router</code> component that provides location-management APIs to child components. Now, <code>Link</code> and <code>Route</code> use the <code>history</code> and <code>location</code> property, respectively, from the shared context object provided by <code>Router</code>.</p>
+        <p>The app works the same as it did in the previous step, only now our app is wrapped in a <code>Router</code> component that provides location management APIs to child components. Now, <code>Link</code> and <code>Route</code> use the <code>history</code> and <code>location</code> property, respectively, from the shared context object provided by <code>Router</code>.</p>
       </div>
       <div className="content-container">
         <h3 className="title">Links List</h3>

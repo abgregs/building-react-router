@@ -34,10 +34,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <h1 className="app-title">
-          Top Surfing Destinations
-        </h1>
+      <div>
         <div className="content-container">
           <h3 className="step">Step 2</h3>
           <h2 className="title">Add Link Component</h2>

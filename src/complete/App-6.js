@@ -7,12 +7,13 @@ import {
   Outlet,
   Link,
   Navigate,
+  useLocation,
 } from 'react-router-dom';
 
 const App = () => (
   <Router>
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path='/' element={<Layout />}>
         <Route path='popoyo' element={<Popoyo />}/>
         <Route path='nosara' element={<Nosara />} />
         <Route path='uluwatu' element={<Uluwatu />} />
@@ -21,6 +22,7 @@ const App = () => (
         <Route path='jeffreys-bay/again' element={<JeffreysBayAgain />} />
         <Route path='nazare' element={<Nazare />} />
       </Route>
+      <Route path='*' element={<NotFound />} />
     </Routes>
   </Router>
 );
@@ -29,58 +31,69 @@ const Source = () => (
   <a href="https://57hours.com/best-of/surfing-worldwide/" target="_blank" rel="noreferrer">[source]</a>
 );
 
+const NotFound = () => {
+  const location = useLocation();
+
+  return (
+    <div className="content-container mt-4">
+      <div className="card-container">
+        <h3 className="card-heading">Route at <code className="bg-red-50 text-red-500">{location.pathname}</code> Not Found!</h3>
+        <p>We didn't incorporate a "Not Found" route into our example app as part of <b>Step 6</b>, so since your browser is at <code>{location.pathname}</code> none of the routes in our app match and nothing will render. It'd be confusing if you just saw a blank page here, so we wanted to explain what was happening.</p>
+        <p>Not to worry, just <Link to='/'><code className="text-indigo-700 font-bold">click here! :)</code> </Link> to navigate to a valid route and you'll be able to check out <b></b>Step 6</p>
+      </div>
+    </div>
+  );
+}
+
 const Layout =() => (
-  <div className="container">
-    <h1 className="app-title">
-      Top Surfing Destinations
-    </h1>
+  <div>
     <div className="content-container">
       <h3 className="step">Step 6</h3>
       <h2 className="title">Using React Router</h2>
       <p>
         Now let's replace our custom router setup with React Router and take advantage of some of its features.
       </p>
-      <p>We scrap the custom components <code>Link</code>, <code>Router</code>, <code>Route</code>, and <code>Redirect</code> that we previously created. We also no longer need to use the history API or manually provide context to our child components. Instead of our custom <code>Redirect</code> component, we can use <code>Navigate</code> from React Router inside our class component <code>Nazare</code> for performing our redirect. Meanwhile, our actual <code>Link</code> and <code>Route</code> components remain basically unchanged. But now React Router is performing the work.</p>
-      <p>Now that we are using React Router, we can take advantage of nesting and inheritance in our routes. We create a parent route with <code><em>path</em>='/'</code> that wraps the routes used in our Links List. This provides a match for the base path we use in our redirect as well as the ability to share some common UI across our child routes. We use React Router's <code>Outlet</code> within our parent component to render the appropriate matching child route in our list when location changes.</p>
-      <p>Whereas our custom router allowed multiple matching routes for the location <code>/jeffreys-bay/again</code>, React Router now selects only the route with the corresponding full matching path for <code>/jeffreys-bay/again</code>.</p>
+      <p>We scrap the custom components <code>Link</code>, <code>Router</code>, <code>Route</code>, and <code>Redirect</code> that we previously created. We also no longer need to use the history API or provide context to our child components. Instead of our custom <code>Redirect</code> component, we can use <code>Navigate</code> from React Router inside our class component <code>Nazare</code> for performing our redirect. Meanwhile, our actual <code>Link</code> and <code>Route</code> components remain basically unchanged. But now React Router is performing the work.</p>
+      <p>We take advantage of nested routes in React Router by adding a parent route with <code><em>path</em>='/'</code> to go around the routes used in our Links List. This provides a match for the base path we use in our redirect and is also responsible for some common UI we share across our child routes. We use React Router's <code>Outlet</code> within our parent component to dynamically render the matching route.</p>
+      <p>Whereas our custom router previously allowed multiple matching routes for the location <code>/jeffreys-bay/again</code>, React Router now selects only the route with the full matching path and doesn't show the less specific <code>/jeffreys-bay</code> route.</p>
     </div>
     <div className="content-container">
       <h3 className="title">Links List</h3>
       <ul>
         <li>
-          <Link to='/popoyo'>
+          <Link to='popoyo'>
             <code>/popoyo</code>
           </Link>
         </li>
         <li>
-          <Link to='/nosara'>
+          <Link to='nosara'>
             <code>/nosara</code>
           </Link>
         </li>
       </ul>
       <ul>
         <li>
-          <Link to='/uluwatu'>
+          <Link to='uluwatu'>
             <code>/uluwatu</code>
           </Link>
         </li>
         <li>
-          <Link to='/cloudbreak'>
+          <Link to='cloudbreak'>
             <code>/cloudbreak</code>
           </Link>
         </li>
         <li>
-          <Link to='/jeffreys-bay'>
+          <Link to='jeffreys-bay'>
             <code>/jeffreys-bay</code>
           </Link>
         </li>
         <li>
-          <Link to='/jeffreys-bay/again'>
+          <Link to='jeffreys-bay/again'>
             <code>/jeffreys-bay/again</code>
           </Link>
         </li>
         <li>
-          <Link to='/nazare'>
+          <Link to='nazare'>
             <code>/nazare</code>
           </Link>
         </li>
