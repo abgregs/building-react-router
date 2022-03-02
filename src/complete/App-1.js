@@ -1,8 +1,15 @@
 import React from 'react';
 
+const basename = process.env.REACT_APP_BASENAME;
+
+function makePath(path) {
+  return basename.concat('', path);
+}
+
 const Route = ({ path, component }) => {
   const pathname = window.location.pathname;
-  if (pathname.match(path)) {
+  const p = makePath(path);
+  if (pathname.match(p)) {
     return (
       React.createElement(component)
     );
@@ -31,29 +38,29 @@ class App extends React.Component {
           <h3 className="title">Links List</h3>
           <ul>
             <li>
-              <a href='/popoyo'>
+              <a href={`${basename}/popoyo`}>
                 <code>/popoyo</code>
               </a>
             </li>
             <li>
-              <a href='/nosara'>
+              <a href={`${basename}/nosara`}>
                 <code>/nosara</code>
               </a>
             </li>
           </ul>
           <ul>
             <li>
-              <a href='/uluwatu'>
+              <a href={`${basename}/uluwatu`}>
                 <code>/uluwatu</code>
               </a>
             </li>
             <li>
-              <a href='/cloudbreak'>
+              <a href={`${basename}/cloudbreak`}>
                 <code>/cloudbreak</code>
               </a>
             </li>
             <li>
-              <a href='/jeffreys-bay'>
+              <a href={`${basename}/jeffreys-bay`}>
                 <code>/jeffreys-bay</code>
               </a>
             </li>

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   Outlet,
@@ -11,20 +10,18 @@ import {
 } from 'react-router-dom';
 
 const App = () => (
-  <Router>
-    <Routes>
-      <Route path='/' element={<Layout />}>
-        <Route path='popoyo' element={<Popoyo />}/>
-        <Route path='nosara' element={<Nosara />} />
-        <Route path='uluwatu' element={<Uluwatu />} />
-        <Route path='cloudbreak' element={<Cloudbreak />} />
-        <Route path='jeffreys-bay' element={<JeffreysBay />} />
-        <Route path='jeffreys-bay/again' element={<JeffreysBayAgain />} />
-        <Route path='nazare' element={<Nazare />} />
-      </Route>
-      <Route path='*' element={<NotFound />} />
-    </Routes>
-  </Router>
+  <Routes>
+    <Route path='/' element={<Layout />}>
+      <Route path='popoyo' element={<Popoyo />}/>
+      <Route path='nosara' element={<Nosara />} />
+      <Route path='uluwatu' element={<Uluwatu />} />
+      <Route path='cloudbreak' element={<Cloudbreak />} />
+      <Route path='jeffreys-bay' element={<JeffreysBay />} />
+      <Route path='jeffreys-bay/again' element={<JeffreysBayAgain />} />
+      <Route path='nazare' element={<Nazare />} />
+    </Route>
+    <Route path='*' element={<NotFound />} />
+  </Routes>
 );
 
 const Source = () => (
@@ -38,7 +35,7 @@ const NotFound = () => {
     <div className="content-container mt-4">
       <div className="card-container">
         <h3 className="card-heading">Route at <code className="bg-red-50 text-red-500">{location.pathname}</code> Not Found!</h3>
-        <p>We didn't incorporate a "Not Found" route into our example app as part of <b>Step 6</b>, so <code>{location.pathname}</code> won't match any of our other routes. It'd be confusing if you just saw a blank page here, so we wanted to explain what was happening.</p>
+        <p>We didn't incorporate a "Not Found" route into our example app as part of <b>Step 6</b>, so <code>{location.pathname}</code> won't match any routes. It'd be confusing if you just saw a blank page here, so we wanted to explain what was happening.</p>
         <p>Not to worry, just <Link to='/'><code className="text-indigo-800 font-bold">CLICK HERE! :)</code> </Link> to navigate to a valid route and you'll be able to check out <b>Step 6</b>.</p>
       </div>
     </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   Outlet,
@@ -10,20 +9,18 @@ import {
 } from 'react-router-dom';
 
 const App = () => (
-  <Router>
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path='popoyo' element={<Popoyo />}/>
-        <Route path='nosara' element={<Nosara />} />
-        <Route path='uluwatu' element={<Uluwatu />} />
-        <Route path='cloudbreak' element={<Cloudbreak />} />
-        <Route path='jeffreys-bay' element={<JeffreysBay />} />
-        <Route path='jeffreys-bay/again' element={<JeffreysBayAgain />} />
-        <Route path='nazare' element={<Nazare />} />
-        <Route path='*' element={<NotFound />} />
-      </Route>
-    </Routes>
-  </Router>
+  <Routes>
+    <Route path="/" element={<Layout />}>
+      <Route path='popoyo' element={<Popoyo />}/>
+      <Route path='nosara' element={<Nosara />} />
+      <Route path='uluwatu' element={<Uluwatu />} />
+      <Route path='cloudbreak' element={<Cloudbreak />} />
+      <Route path='jeffreys-bay' element={<JeffreysBay />} />
+      <Route path='jeffreys-bay/again' element={<JeffreysBayAgain />} />
+      <Route path='nazare' element={<Nazare />} />
+      <Route path='*' element={<NotFound />} />
+    </Route>
+  </Routes>
 );
 
 const Source = () => (

@@ -3,9 +3,16 @@ import React from 'react';
 
 import { createBrowserHistory } from "history";
 
+const basename = process.env.REACT_APP_BASENAME;
+
+function makePath(path) {
+  return basename.concat('', path);
+}
+
 const Route = ({ path, component }, { location }) => {
   const pathname = location.pathname;
-  if (pathname.match(path)) {
+  const p = makePath(path);
+  if (pathname.match(p)) {
     return (
       React.createElement(component)
     );
@@ -22,9 +29,10 @@ const Link = ({ to, children }, { history }) => (
   <a
     onClick={(e) => {
       e.preventDefault();
-      history.push(to);
+      const p = makePath(to);
+      history.push(p);
     }}
-    href={to}
+    href={`${basename}${to}`}
   >
     {children}
   </a>

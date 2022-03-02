@@ -1,5 +1,10 @@
 import ReactDOM from "react-dom";
 import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from 'react-router-dom';
 
 import "./index.css";
 
@@ -40,8 +45,11 @@ class AppContainer extends React.Component {
   }
 }
 
-
 ReactDOM.render(
-  <AppContainer />,
+  <Router basename={process.env.NODE_ENV === 'development' ? process.env.REACT_APP_BASENAME : process.env.REACT_APP_BASENAME.substring(1)}>
+    <Routes>
+      <Route path='*' element={<AppContainer />} />
+    </Routes>
+  </Router>,
   document.getElementById("root")
 );
