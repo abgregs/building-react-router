@@ -98,7 +98,7 @@ const App = () => (
         <p>The <code>Nazare</code> component added below runs a countdown and conditionally renders <code>Redirect</code> when the countdown completes, supplying <code>/</code> to <code>Redirect</code> as the location. Click the <code>/nazare</code> link to see this in action.</p>
       </div>
       <div className="content-container">
-        <h3 className="title">Links List</h3>
+        <h3 className="title">Surfing Destinations</h3>
         <ul>
           <li>
             <Link to='/popoyo'>

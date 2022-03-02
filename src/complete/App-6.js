@@ -51,11 +51,11 @@ const Layout =() => (
         Now let's replace our custom router setup with React Router and take advantage of some of its features.
       </p>
       <p>We scrap the custom components <code>Link</code>, <code>Router</code>, <code>Route</code>, and <code>Redirect</code> that we previously created. We also no longer need to use the history API or provide context to our child components. Instead of our custom <code>Redirect</code> component, we can use <code>Navigate</code> from React Router inside our class component <code>Nazare</code> for performing our redirect. Meanwhile, our actual <code>Link</code> and <code>Route</code> components remain basically unchanged. But now React Router is performing the work.</p>
-      <p>We take advantage of nested routes in React Router by adding a parent route with <code><em>path</em>='/'</code> to go around the routes used in our Links List. This provides a match for the base path we use in our redirect and is also responsible for some common UI we share across our child routes. We use React Router's <code>Outlet</code> within our parent component to dynamically render the matching route.</p>
+      <p>We take advantage of nested routes in React Router by adding a parent route with <code><em>path</em>='/'</code> to go around the routes used in our Surfing Destinations. This provides a match for the base path we use in our redirect and is also responsible for some common UI we share across our child routes. We use React Router's <code>Outlet</code> within our parent component to dynamically render the matching route.</p>
       <p>Whereas our custom router previously allowed multiple matching routes for the location <code>/jeffreys-bay/again</code>, React Router now selects only the route with the full matching path and doesn't show the less specific <code>/jeffreys-bay</code> route.</p>
     </div>
     <div className="content-container">
-      <h3 className="title">Links List</h3>
+      <h3 className="title">Surfing Destinations</h3>
       <ul>
         <li>
           <Link to='popoyo'>

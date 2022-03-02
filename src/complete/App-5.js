@@ -97,7 +97,7 @@ const App = () => (
         <p>Our custom router doesn't account for exact matches or have anything in place to handle ambiguous routes. This means that any location that begins with the path will be considered a match in our routes. When we visit <code>/jeffreys-bay/again</code> both components render. This is typically not desirable. In our next step, we'll replace our custom router with React Router and see how the features of React Router address this.</p>
       </div>
       <div className="content-container">
-        <h3 className="title">Links List</h3>
+        <h3 className="title">Surfing Destinations</h3>
         <ul>
           <li>
             <Link to='/popoyo'>

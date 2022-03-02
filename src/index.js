@@ -37,7 +37,7 @@ class AppContainer extends React.Component {
           <SelectMenu activeComponent={this.state.component} handleNavigate={this.handleNavigate} />
         </div>
         <h1 className="app-title text-center text-3xl font-bold mb-8;">
-          Top Surfing Destinations
+          Building React Router
         </h1>
           {this.state.component}
       </div>

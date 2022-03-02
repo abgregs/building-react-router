@@ -84,7 +84,7 @@ const App = () => (
         <p>The app works the same as it did in the previous step, only now our app is wrapped in a <code>Router</code> component that provides location management APIs to child components. Now, <code>Link</code> and <code>Route</code> use the <code>history</code> and <code>location</code> property, respectively, from the shared context object provided by <code>Router</code>.</p>
       </div>
       <div className="content-container">
-        <h3 className="title">Links List</h3>
+        <h3 className="title">Surfing Destinations</h3>
         <ul>
           <li>
             <Link to='/popoyo'>

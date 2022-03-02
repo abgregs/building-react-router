@@ -35,7 +35,7 @@ class App extends React.Component {
           <p>The links listed below are regular <code>{'<a>'}</code> elements. Our page will still perform the default behavior on link click. It will make a fresh request to the server at that location and return <code>index.html</code>. Our browser then mounts our entire React app to the DOM. If any <code>{'Route'}</code> is present and has a <code><em>path</em></code> matching the browser location, then the component passed to that route is rendered.</p>
         </div>
         <div className="content-container">
-          <h3 className="title">Links List</h3>
+          <h3 className="title">Surfing Destinations</h3>
           <ul>
             <li>
               <a href={`${basename}/popoyo`}>

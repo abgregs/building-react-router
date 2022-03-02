@@ -39,7 +39,7 @@ const Layout =() => (
       </p>
     </div>
     <div className="content-container">
-      <h3 className="title">Links List</h3>
+      <h3 className="title">Surfing Destinations</h3>
       <ul>
         <li>
           <Link to='/popoyo'>

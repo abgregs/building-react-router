@@ -53,7 +53,7 @@ class App extends React.Component {
           <p>This time the links below are rendered by our custom <code>{'Link'}</code> component. When our <code><em>onClick</em></code> handler runs, we prevent the default behavior of the browser. There is no full page load. Instead, we use the history API to update the location of our app. This will update the path in the URL. We listen for this change in the browser history and use <code>forceUpdate()</code> to alert our React app. Our <code>{'Route'}</code> compenent from Step 1 hasn't changed. It will once again check for a match against the new location. However, this time the updates to our app happen much faster since we avoid a full page load.</p>
         </div>
         <div className="content-container">
-          <h3 className="title">Links List</h3>
+          <h3 className="title">Surfing Destinations</h3>
           <ul>
             <li>
               <Link to='/popoyo'>
