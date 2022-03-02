@@ -2,6 +2,7 @@
   "name": "building-react-router",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://abgregs.github.io/building-react-router/",
   "dependencies": {
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.5",
@@ -15,6 +16,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -40,6 +43,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
+    "gh-pages": "^3.2.3",
     "history": "^5.3.0",
     "postcss": "^8.4.6",
     "tailwindcss": "^3.0.23"
