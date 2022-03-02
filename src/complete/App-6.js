@@ -38,8 +38,8 @@ const NotFound = () => {
     <div className="content-container mt-4">
       <div className="card-container">
         <h3 className="card-heading">Route at <code className="bg-red-50 text-red-500">{location.pathname}</code> Not Found!</h3>
-        <p>We didn't incorporate a "Not Found" route into our example app as part of <b>Step 6</b>, so since your browser is at <code>{location.pathname}</code> none of the routes in our app match and nothing will render. It'd be confusing if you just saw a blank page here, so we wanted to explain what was happening.</p>
-        <p>Not to worry, just <Link to='/'><code className="text-indigo-700 font-bold">click here! :)</code> </Link> to navigate to a valid route and you'll be able to check out <b></b>Step 6</p>
+        <p>We didn't incorporate a "Not Found" route into our example app as part of <b>Step 6</b>, so <code>{location.pathname}</code> won't match any of our other routes. It'd be confusing if you just saw a blank page here, so we wanted to explain what was happening.</p>
+        <p>Not to worry, just <Link to='/'><code className="text-indigo-800 font-bold">CLICK HERE! :)</code> </Link> to navigate to a valid route and you'll be able to check out <b>Step 6</b>.</p>
       </div>
     </div>
   );
